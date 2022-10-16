@@ -4,6 +4,7 @@
 [-4, -8, 8, 2] -> [4, 8, -8, -2]*/
 
 int[] array = { 1, 6, -5, 5, -2, 9, -8, 5 };
+
 int[] ReversArray(int[] arr)
 {
     for (int i = 0; i < arr.Length; i++)
