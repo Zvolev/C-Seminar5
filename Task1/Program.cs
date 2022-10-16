@@ -39,44 +39,22 @@ int[] CreateRandomArray(int argLength = 2, int argMin = 0, int argMax = 1) // с
     return array;
 }
 
-int SumArrayElements(int[] array, char sign = '0')
+int SumArrayElements(int[] array, int sign = 1) // считаем сумму положительных/отрицательных (sign = -1) элементов массива
 {
     int sum = 0;
-    if (sign == '+')
+
+    for (int i = 0; i < array.Length; i++)
     {
-        for (int i = 0; i < array.Length; i++)
+        if (array[i] * sign > 0)
         {
-            if (array[i] > 0)
-            {
-                sum = sum + array[i];
-            }
-
-        }
-    }
-
-    if (sign == '-')
-    {
-        for (int i = 0; i < array.Length; i++)
-        {
-            if (array[i] < 0)
-            {
-                sum = sum + array[i];
-            }
-
-        }
-    }
-
-    if (sign == '0')
-    {
-        for (int i = 0; i < array.Length; i++)
-        {
-            sum = sum + array[i];
-        }
+            sum += array[i];
+        }   
     }
     return sum;
+
 }
 
-void PrintArray(int[] array)
+void PrintArray(int[] array) // выводим массив на печать
 {
     for (int i = 0; i < array.Length; i++)
     {
@@ -88,10 +66,9 @@ void PrintArray(int[] array)
 int len = InputArraySize("Укажите размер массива >- ");
 int min = Prompt("Укажите диапазон значений массива: от >- ");
 int max = Prompt("до (включительно) >- ");
-int[] array = CreateRandomArray(len, min, max - 1);
-int sumPlus = SumArrayElements(array, '+');
-int sumMinus = SumArrayElements(array, '-');
-int sum = SumArrayElements(array);
-PrintArray(array);
+int[] array = CreateRandomArray(len, min, max - 1); // создаем массив по заданным параметрам
+int sumPlus = SumArrayElements(array); // сумма положительных элементов массива
+int sumMinus = SumArrayElements(array, -1); // сумма отрицательных элементов массива
+PrintArray(array); // выводим массив на печать
 System.Console.WriteLine();
-System.Console.WriteLine($"Сума положительных элементов: {sumPlus}\nСумма отрицательных элементов: {sumMinus}\nСумма всех элементов: {sum}");
+System.Console.WriteLine($"Сума положительных элементов: {sumPlus}\nСумма отрицательных элементов: {sumMinus}");
