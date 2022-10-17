@@ -21,24 +21,26 @@ int Prompt(string message) // запрос и ввод значений
     return number;
 }
 
-int[] CreateRandomArray(int argLength = 2, int argMin = 0, int argMax = 1) // создаем массив и наполняем его случайными значениями по заданным параметрам и выводим на экран
+double[] CreateRandomArray(int argLength = 2, int argMin =0, int argMax = 1) // создаем массив и наполняем его случайными значениями по заданным параметрам и выводим на экран
 {
-    int[] array = new int[argLength];
+    double[] array = new double[argLength];
 
     Random rand = new Random();
+    int r = 0;
     for (int i = 0; i < argLength; i++)
     {
-        array[i] = rand.Next(argMin, argMax);
+        r = rand.Next(argMin, argMax);
+        array[i] = rand.NextDouble() + Convert.ToDouble(r);
         //System.Console.WriteLine(array[i]);
     }
     return array;
 }
 
-int DifferenceMinMaxArray(int[] array) //разницу между максимальным и минимальным элементов массива
+double DifferenceMinMaxArray(double[] array) //разницу между максимальным и минимальным элементов массива
 {
     
-    int min = array[0];
-    int max = array[0];
+    double min = array[0];
+    double max = array[0];
     for (int i = 0; i < array.Length; i++)
     {
         if (array[i] > max)
@@ -53,7 +55,7 @@ int DifferenceMinMaxArray(int[] array) //разницу между максим�
     return (max - min);
 }
 
-void PrintArray(int[] array) // выводим массив на печать
+void PrintArray(double[] array) // выводим массив на печать
 {
     for (int i = 0; i < array.Length; i++)
     {
@@ -65,7 +67,7 @@ void PrintArray(int[] array) // выводим массив на печать
 int len = InputArraySize("Укажите размер массива >- ");
 int min = Prompt("Укажите диапазон значений массива: от >- ");
 int max = Prompt("до (включительно) >- ");
-int[] array = CreateRandomArray(len, min, max - 1); // создаем массив по заданным параметрам
+double[] array = CreateRandomArray(len, min, max - 1); // создаем массив по заданным параметрам
 PrintArray(array); // выводим массив на печать
 System.Console.WriteLine();
 System.Console.WriteLine($"Разницфа между максимальным и минимальным элементами массива равна {DifferenceMinMaxArray(array)}");
